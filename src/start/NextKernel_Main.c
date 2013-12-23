@@ -7,7 +7,7 @@
 /* Headers for all system functions */
 //#include "NextDivel.h"
 /* Headers for MultiBoot */
-#include <ND_Multiboot.hpp>
+//#include <ND_Multiboot.hpp>
 /* Headers for NextFS */
 //#include "NextFS.h"
 //#include "ND_Initrd.h"
@@ -16,7 +16,7 @@
 #if defined(__cplusplus)
 extern "C" /* Use C linkage for kernel_main. */
 #endif
-int NextKernel_Main(struct multiboot *mboot_ptr)
+int NextKernel_Main(/*struct multiboot *mboot_ptr*/)
 {
 	/*NextKernel_GDT_Init();
 	ND_Versions_Startup();*/
