@@ -1,13 +1,13 @@
  /* Check if the compiler thinks if we are targeting the wrong operating system. */
-//#ifndef NEXT_DIVEL
-//#error "You are not using a cross-compiler, you will most certainly run into trouble"
-//#endif
+#ifndef NEXT_DIVEL
+#error "You are not using a cross-compiler, you will most certainly run into trouble"
+#endif
 /* Headers for description tables */
 //#include "NextKernel_GDT.h"
 /* Headers for all system functions */
 //#include "NextDivel.h"
 /* Headers for MultiBoot */
-//#include "ND_Multiboot.h"
+#include <ND_Multiboot.hpp>
 /* Headers for NextFS */
 //#include "NextFS.h"
 //#include "ND_Initrd.h"
@@ -16,7 +16,7 @@
 #if defined(__cplusplus)
 extern "C" /* Use C linkage for kernel_main. */
 #endif
-int NextKernel_Main(/*struct multiboot *mboot_ptr*/)
+int NextKernel_Main(struct multiboot *mboot_ptr)
 {
 	/*NextKernel_GDT_Init();
 	ND_Versions_Startup();*/
