@@ -28,10 +28,28 @@
 
     <div class="container">
       <section id="main_content">
-        <h3>
-<a name="welcome-to-nextdivel" class="anchor" href="#welcome-to-nextdivel"><span class="octicon octicon-link"></span></a>Welcome to NextDivel</h3>
+        <h1>
+<a name="nextdivel" class="anchor" href="#nextdivel"><span class="octicon octicon-link"></span></a>NextDivel</h1>
 
-<p>NextDivel is an operating system written from scratch and licensed under the GNU GPL v2 license. </p>
+<p>NextDivel Experimental OS</p>
+
+<p>NextDivel is an OS written from scratch under the GNU GPL v2.</p>
+
+<h1>
+<a name="build-instructions" class="anchor" href="#build-instructions"><span class="octicon octicon-link"></span></a>Build instructions</h1>
+
+<p>Run the following commands</p>
+
+<div class="highlight highlight-sh"><pre>git clone http://github.com/AdrianArroyoCalle/next-divel
+<span class="nb">cd </span>next-divel
+mkdir build
+<span class="nb">cd </span>build
+cmake ..
+make
+make <span class="nv">DESTDIR</span><span class="o">=</span>next install
+chmod +x iso.sh
+./iso.sh
+</pre></div>
       </section>
     </div>
 
