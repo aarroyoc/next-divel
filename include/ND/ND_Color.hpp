@@ -7,7 +7,7 @@
 #ifndef ND_COLOR_HPP
 #define ND_COLOR_HPP
 
-typedef enum { 
+typedef enum ND_Color{ 
 	ND_COLOR_BLACK			= 0,
 	ND_COLOR_BLUE			= 1,
 	ND_COLOR_GREEN			= 2,
