@@ -5,6 +5,7 @@
 #include <ND_Screen.hpp>
 #include <ND_Color.hpp>
 #include <ND_Panic.hpp>
+#include <ND_Keyboard.hpp>
 /* Headers for description tables */
 //#include "NextKernel_GDT.h"
 /* Headers for all system functions */
@@ -70,7 +71,8 @@ int NextKernel_Main(/*struct multiboot *mboot_ptr*/)
 	ND::Screen::PutString("NextDivel\n");
 	ND::Screen::SetColor(ND_SIDE_FOREGROUND,ND_COLOR_BLACK);
 	ND::Screen::PutString("Licensed under GNU GPL v2");
-	ND::Panic::Show("404: Testing the Kernel Panic Screen");
+	
+	char tecla=ND::Keyboard::GetChar();
 
 	return 0;
 }
