@@ -6,12 +6,23 @@
 #include <ND_Types.hpp>
 #include <ND_Color.hpp>
 #include <ND_Screen.hpp>
+#include <ND_Ports.hpp>
 
 uint16_t *vidmem= (uint16_t *)0xB8000;
 ND_Color backColour = ND_COLOR_BLACK;
 ND_Color foreColour = ND_COLOR_WHITE;
 uint8_t cursor_x = 0;
 uint8_t cursor_y = 0;
+
+static void UpdateCursor()
+{
+   // The screen is 80 characters wide...
+   uint16_t cursorLocation = cursor_y * 80 + cursor_x;
+   ND::Ports::OutputB(0x3D4, 14);                  // Tell the VGA board we are setting the high cursor byte.
+   ND::Ports::OutputB(0x3D5, cursorLocation >> 8); // Send the high cursor byte.
+   ND::Ports::OutputB(0x3D4, 15);                  // Tell the VGA board we are setting the low cursor byte.
+   ND::Ports::OutputB(0x3D5, cursorLocation);      // Send the low cursor byte.
+}
 
 /**
  * @brief Gets the current color
@@ -58,7 +69,7 @@ void ND::Screen::PutChar(char c)
 	}else if(c == '\n')
 	{
 		cursor_x=0;
-		cursor_y=1;
+		cursor_y++;
 	}
 	if(c >= ' ') /* Printable character */
 	{
@@ -71,6 +82,8 @@ void ND::Screen::PutChar(char c)
 		cursor_x = 0;
 		cursor_y++;
 	}
+
+	
 	/* Scroll if needed*/
 	uint8_t attributeByte2 = (0 /*black*/ << 4) | (15 /*white*/ & 0x0F);
 	uint16_t blank = 0x20 /* space */ | (attributeByte2 << 8);
@@ -91,6 +104,8 @@ void ND::Screen::PutChar(char c)
        // The cursor should now be on the last line.
        cursor_y = 24;
    }
+	/* Update cursor */
+	UpdateCursor();
 }
 /**
  * @brief Puts a complete string to screen
@@ -123,6 +138,8 @@ void ND::Screen::PutString(const char* str)
    // Move the hardware cursor back to the start.
    cursor_x = 0;
    cursor_y = 0;
+   
+   UpdateCursor();
 }
 /**
  * @brief Sets the cursor via software
@@ -133,5 +150,7 @@ void ND::Screen::SetCursor(uint8_t x, uint8_t y)
 {
 	cursor_x=x;
 	cursor_y=y;
+	
+	UpdateCursor();
 }
 

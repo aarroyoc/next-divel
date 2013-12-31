@@ -12,19 +12,17 @@
 char ND::Keyboard::GetChar()
 {
 	unsigned char scancode;
-	while(1)
-	{
-		scancode=ND::Ports::InputB(0x60);
+//	while(1)
+//	{
+		scancode=(unsigned char)ND::Ports::InputB(0x60);
 		
 		if(scancode & ND_KEYBOARD_KEY_RELEASE)
 		{
 			/*return en_US[scancode];*/
 		}else{
 
-			/*return en_US[scancode];*/
-			ND::Screen::PutChar(en_US[scancode]);
-			
+			return en_US[scancode];
 		}
-	}
+//	}
 	return 'N';
 }

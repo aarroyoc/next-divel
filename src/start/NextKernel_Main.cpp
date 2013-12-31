@@ -6,6 +6,7 @@
 #include <ND_Color.hpp>
 #include <ND_Panic.hpp>
 #include <ND_Keyboard.hpp>
+#include <ND_GDT.hpp>
 /* Headers for description tables */
 //#include "NextKernel_GDT.h"
 /* Headers for all system functions */
@@ -70,9 +71,14 @@ int NextKernel_Main(/*struct multiboot *mboot_ptr*/)
 	ND::Screen::SetColor(ND_SIDE_FOREGROUND,ND_COLOR_GREEN);
 	ND::Screen::PutString("NextDivel\n");
 	ND::Screen::SetColor(ND_SIDE_FOREGROUND,ND_COLOR_BLACK);
-	ND::Screen::PutString("Licensed under GNU GPL v2");
-	
-	char tecla=ND::Keyboard::GetChar();
+	ND::Screen::PutString("Licensed under GNU GPL v2\n");
+	ND::GDT::Install();
+		
+	/*while(1)
+	{
+		char tecla=ND::Keyboard::GetChar();
+		ND::Screen::PutChar(tecla);
+	}*/
 
 	return 0;
 }

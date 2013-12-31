@@ -6,9 +6,13 @@
 #ifndef ND_PORTS_HPP
 #define ND_PORTS_HPP
 
+#include <ND_Types.hpp>
+
 namespace ND{
 	namespace Ports{
-			unsigned char InputB(unsigned short _port);
+			uint8_t InputB(uint16_t _port);
+			uint16_t InputW(uint16_t port);
+			void OutputB(uint16_t port, uint8_t value); 
 		}
 	}
 #endif

@@ -266,5 +266,9 @@ typedef unsigned long long int	uintmax_t;
 #  define SIZE_MAX		(4294967295U)
 # endif
 
+
 #endif
+
+typedef uint32_t size_t;
+
 #endif
