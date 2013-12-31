@@ -6,7 +6,7 @@ ENABLE_LANGUAGE(ASM-ATT)
 FILE(GLOB ASM_START "start/*.asm")
 FILE(GLOB CXX_START "start/*.cpp")
 SET(SRC_START ${ASM_START} ${CXX_START})
-SET(CMAKE_EXE_LINKER_FLAGS "-T${CMAKE_SOURCE_DIR}/src/start/link.ld -std=c++11 -nostdlib -fPIC -ffreestanding -lgcc")
+SET(CMAKE_EXE_LINKER_FLAGS "-T${CMAKE_SOURCE_DIR}/src/start/link.ld -std=c++11 -nostdlib -fPIC -ffreestanding -lgcc -m32")
 ADD_DEFINITIONS("-DNEXT_DIVEL")
 INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/include/ND)
 

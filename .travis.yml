@@ -2,5 +2,5 @@ language: cpp
 compiler:
  - gcc
  - clang
-script: cmake . -DCMAKE_CXX_FLAGS="-m32" && make
+script: cmake . && make
 install: sudo apt-get update && sudo apt-get install xorriso grub-common gcc-multilib
