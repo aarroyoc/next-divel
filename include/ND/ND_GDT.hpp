@@ -3,7 +3,7 @@
  * @author Adrián Arroyo Calle
  * @brief Interface for create GDT descriptions
  * */
-#include <stdint.h>
+#include <ND_Types.hpp>
 #ifndef ND_GDT_HPP
 #define ND_GDT_HPP
 

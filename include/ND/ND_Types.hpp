@@ -25,6 +25,7 @@
 #ifndef ND_TYPES_HPP
 #define ND_TYPES_HPP	1
 
+#ifdef EXPLICIT_TYPES
 /* Exact integral types.  */
 
 /* Signed.  */
@@ -268,7 +269,8 @@ typedef unsigned long long int	uintmax_t;
 
 
 #endif
-
+#else
+#include <stdint.h>
 typedef uint32_t size_t;
-
+#endif
 #endif
