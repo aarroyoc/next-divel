@@ -13,17 +13,19 @@ struct ND::GDT::Ptr gp;
 	
 static void gdt_flush()
 {
-	asm volatile("lgdt %0" :: "m" (gp));
+	asm volatile("lgdtl (gp)");
 	asm volatile(
-		"movl $0x10, %eax \n"
-		"movl %eax, %ds \n"
-		"movl %eax, %es \n"
-		"movl %eax, %fs \n"
-		"movl %eax, %gs \n"
-		"movl %eax, %ss \n"
+		"movw $0x10, %ax \n"
+		"movw %ax, %ds \n"
+		"movw %ax, %es \n"
+		"movw %ax, %fs \n"
+		"movw %ax, %gs \n"
+		"movw %ax, %ss \n"
+		"ljmp $0x08, $next \n"
+		"next:          \n"
 	);
 }
-void ND::GDT::SetGate(int num, unsigned long base, unsigned long limit, unsigned char access,unsigned char gran)
+void ND::GDT::SetGate(int num, uint32_t base, uint32_t limit, uint8_t access,uint8_t gran)
 {
 	gdt[num].base_low=(base & 0xFFFF);
 	gdt[num].base_middle=(base >> 16) & 0xFF;
@@ -41,7 +43,7 @@ void ND::GDT::Install()
 	ND::Screen::PutString("Installing GDT...");
 
 	gp.limit=(sizeof(struct ND::GDT::Entry)*3)-1;
-	gp.base=(unsigned int)&gdt;
+	gp.base=(uint32_t)&gdt;
 	
 	ND::GDT::SetGate(0,0,0,0,0); /* NULL segmente entry */
 	ND::GDT::SetGate(1,0,0xFFFFFFFF,0x9A,0xCF); /* 4 GiB for Code Segment */
