@@ -8,6 +8,7 @@
 #include <ND_Screen.hpp>
 #include <ND_Color.hpp>
 #include <ND_Memory.hpp>
+#include <ND_ISR.hpp>
 
 struct ND::IDT::Entry idt[256];
 struct ND::IDT::Ptr idtptr;
@@ -36,6 +37,7 @@ void ND::IDT::Install()
 	ND::Memory::Set(&idt,0,sizeof(struct ND::IDT::Entry)*256);
 	
 	/* Here it goes the ISR */
+	ND::IDT::SetGate(0,(unsigned)ND::ISR::ISR1,0x08,0x8E);
 	
 	ND::IDT::Flush();
 	
