@@ -7,6 +7,7 @@
 #include <ND_Panic.hpp>
 #include <ND_Keyboard.hpp>
 #include <ND_GDT.hpp>
+#include <ND_IDT.hpp>
 /* Headers for description tables */
 //#include "NextKernel_GDT.h"
 /* Headers for all system functions */
@@ -73,6 +74,7 @@ int NextKernel_Main(/*struct multiboot *mboot_ptr*/)
 	ND::Screen::SetColor(ND_SIDE_FOREGROUND,ND_COLOR_BLACK);
 	ND::Screen::PutString("Licensed under GNU GPL v2\n");
 	ND::GDT::Install();
+	ND::IDT::Install();
 		
 	/*while(1)
 	{
