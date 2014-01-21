@@ -8,6 +8,7 @@
 #include <ND_Keyboard.hpp>
 #include <ND_GDT.hpp>
 #include <ND_IDT.hpp>
+#include <ND_IRQ.hpp>
 /* Headers for description tables */
 //#include "NextKernel_GDT.h"
 /* Headers for all system functions */
@@ -75,6 +76,7 @@ int NextKernel_Main(/*struct multiboot *mboot_ptr*/)
 	ND::Screen::PutString("Licensed under GNU GPL v2\n");
 	ND::GDT::Install();
 	ND::IDT::Install();
+	ND::IRQ::Install();
 		
 	/*while(1)
 	{
