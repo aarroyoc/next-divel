@@ -87,3 +87,282 @@ void ND::ISR::ISR1()
 	"jmp ND_ISR_Common \n"
 	);
 }
+void ND::ISR::ISR2()
+{
+	asm volatile(
+	"cli \n"
+	"pushl 0 \n"
+	"pushl 0 \n"
+	"jmp ND_ISR_Common \n"
+	);
+}
+void ND::ISR::ISR3()
+{
+	asm volatile(
+	"cli \n"
+	"pushl 0 \n"
+	"pushl 0 \n"
+	"jmp ND_ISR_Common \n"
+	);
+}
+void ND::ISR::ISR4()
+{
+	asm volatile(
+	"cli \n"
+	"pushl 0 \n"
+	"pushl 0 \n"
+	"jmp ND_ISR_Common \n"
+	);
+}
+void ND::ISR::ISR5()
+{
+	asm volatile(
+	"cli \n"
+	"pushl 0 \n"
+	"pushl 0 \n"
+	"jmp ND_ISR_Common \n"
+	);
+}
+void ND::ISR::ISR6()
+{
+	asm volatile(
+	"cli \n"
+	"pushl 0 \n"
+	"pushl 0 \n"
+	"jmp ND_ISR_Common \n"
+	);
+}
+void ND::ISR::ISR7()
+{
+	asm volatile(
+	"cli \n"
+	"pushl 0 \n"
+	"pushl 0 \n"
+	"jmp ND_ISR_Common \n"
+	);
+}
+void ND::ISR::ISR8()
+{
+	asm volatile(
+	"cli \n"
+	"pushl 0 \n"
+	"pushl 0 \n"
+	"jmp ND_ISR_Common \n"
+	);
+}
+void ND::ISR::ISR9()
+{
+	asm volatile(
+	"cli \n"
+	"pushl 0 \n"
+	"pushl 0 \n"
+	"jmp ND_ISR_Common \n"
+	);
+}
+void ND::ISR::ISR10()
+{
+	asm volatile(
+	"cli \n"
+	"pushl 0 \n"
+	"pushl 0 \n"
+	"jmp ND_ISR_Common \n"
+	);
+}
+void ND::ISR::ISR11()
+{
+	asm volatile(
+	"cli \n"
+	"pushl 0 \n"
+	"pushl 0 \n"
+	"jmp ND_ISR_Common \n"
+	);
+}
+void ND::ISR::ISR12()
+{
+	asm volatile(
+	"cli \n"
+	"pushl 0 \n"
+	"pushl 0 \n"
+	"jmp ND_ISR_Common \n"
+	);
+}
+void ND::ISR::ISR13()
+{
+	asm volatile(
+	"cli \n"
+	"pushl 0 \n"
+	"pushl 0 \n"
+	"jmp ND_ISR_Common \n"
+	);
+}
+void ND::ISR::ISR14()
+{
+	asm volatile(
+	"cli \n"
+	"pushl 0 \n"
+	"pushl 0 \n"
+	"jmp ND_ISR_Common \n"
+	);
+}
+void ND::ISR::ISR15()
+{
+	asm volatile(
+	"cli \n"
+	"pushl 0 \n"
+	"pushl 0 \n"
+	"jmp ND_ISR_Common \n"
+	);
+}
+void ND::ISR::ISR16()
+{
+	asm volatile(
+	"cli \n"
+	"pushl 0 \n"
+	"pushl 0 \n"
+	"jmp ND_ISR_Common \n"
+	);
+}
+void ND::ISR::ISR17()
+{
+	asm volatile(
+	"cli \n"
+	"pushl 0 \n"
+	"pushl 0 \n"
+	"jmp ND_ISR_Common \n"
+	);
+}
+void ND::ISR::ISR18()
+{
+	asm volatile(
+	"cli \n"
+	"pushl 0 \n"
+	"pushl 0 \n"
+	"jmp ND_ISR_Common \n"
+	);
+}
+void ND::ISR::ISR19()
+{
+	asm volatile(
+	"cli \n"
+	"pushl 0 \n"
+	"pushl 0 \n"
+	"jmp ND_ISR_Common \n"
+	);
+}
+void ND::ISR::ISR20()
+{
+	asm volatile(
+	"cli \n"
+	"pushl 0 \n"
+	"pushl 0 \n"
+	"jmp ND_ISR_Common \n"
+	);
+}
+void ND::ISR::ISR21()
+{
+	asm volatile(
+	"cli \n"
+	"pushl 0 \n"
+	"pushl 0 \n"
+	"jmp ND_ISR_Common \n"
+	);
+}
+void ND::ISR::ISR22()
+{
+	asm volatile(
+	"cli \n"
+	"pushl 0 \n"
+	"pushl 0 \n"
+	"jmp ND_ISR_Common \n"
+	);
+}
+void ND::ISR::ISR23()
+{
+	asm volatile(
+	"cli \n"
+	"pushl 0 \n"
+	"pushl 0 \n"
+	"jmp ND_ISR_Common \n"
+	);
+}
+void ND::ISR::ISR24()
+{
+	asm volatile(
+	"cli \n"
+	"pushl 0 \n"
+	"pushl 0 \n"
+	"jmp ND_ISR_Common \n"
+	);
+}
+void ND::ISR::ISR25()
+{
+	asm volatile(
+	"cli \n"
+	"pushl 0 \n"
+	"pushl 0 \n"
+	"jmp ND_ISR_Common \n"
+	);
+}
+void ND::ISR::ISR26()
+{
+	asm volatile(
+	"cli \n"
+	"pushl 0 \n"
+	"pushl 0 \n"
+	"jmp ND_ISR_Common \n"
+	);
+}
+void ND::ISR::ISR27()
+{
+	asm volatile(
+	"cli \n"
+	"pushl 0 \n"
+	"pushl 0 \n"
+	"jmp ND_ISR_Common \n"
+	);
+}
+void ND::ISR::ISR28()
+{
+	asm volatile(
+	"cli \n"
+	"pushl 0 \n"
+	"pushl 0 \n"
+	"jmp ND_ISR_Common \n"
+	);
+}
+void ND::ISR::ISR29()
+{
+	asm volatile(
+	"cli \n"
+	"pushl 0 \n"
+	"pushl 0 \n"
+	"jmp ND_ISR_Common \n"
+	);
+}
+void ND::ISR::ISR30()
+{
+	asm volatile(
+	"cli \n"
+	"pushl 0 \n"
+	"pushl 0 \n"
+	"jmp ND_ISR_Common \n"
+	);
+}
+void ND::ISR::ISR31()
+{
+	asm volatile(
+	"cli \n"
+	"pushl 0 \n"
+	"pushl 0 \n"
+	"jmp ND_ISR_Common \n"
+	);
+}
+void ND::ISR::ISR32()
+{
+	asm volatile(
+	"cli \n"
+	"pushl 0 \n"
+	"pushl 0 \n"
+	"jmp ND_ISR_Common \n"
+	);
+}

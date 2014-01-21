@@ -75,7 +75,6 @@ int NextKernel_Main(/*struct multiboot *mboot_ptr*/)
 	ND::Screen::PutString("Licensed under GNU GPL v2\n");
 	ND::GDT::Install();
 	ND::IDT::Install();
-	int sum=10/0;
 		
 	/*while(1)
 	{
