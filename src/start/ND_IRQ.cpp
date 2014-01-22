@@ -47,8 +47,6 @@ void ND::IRQ::Install()
 	ND::IDT::SetGate(46,(unsigned)ND::IRQ::IRQ15,0x08,0x8E);
 	ND::IDT::SetGate(47,(unsigned)ND::IRQ::IRQ16,0x08,0x8E);
 	
-	/** @todo Add more IRQs*/
-	
 	ND::Screen::SetColor(ND_SIDE_FOREGROUND,ND_COLOR_GREEN);
 	ND::Screen::PutString("done");
 	
