@@ -8,7 +8,6 @@
 #include <ND_Types.hpp>
 namespace ND{
 		namespace IRQ{
-				void InstallHandler(int irq_code,void (*handler)(struct regs* r));
 				void UninstallHandler(int irq_code);
 				void Remap(int pic1, int pic2);
 				void Install();
@@ -34,6 +33,7 @@ extern "C"
 {
 	void ND_IRQ_Handler(struct regs* r);
 	void ND_IRQ_Common();
+	void ND_IRQ_InstallHandler(int irq_code,void (*handler)(struct regs* r));
 }
 
 

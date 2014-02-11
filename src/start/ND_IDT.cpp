@@ -9,6 +9,7 @@
 #include <ND_Color.hpp>
 #include <ND_Memory.hpp>
 #include <ND_ISR.hpp>
+#include <ND_IRQ.hpp>
 
 struct ND::IDT::Entry idt[256];
 struct ND::IDT::Ptr idtptr;
@@ -37,6 +38,8 @@ void ND::IDT::Install()
 	ND::Memory::Set(&idt,0,sizeof(struct ND::IDT::Entry)*256);
 	
 	/* Here it goes the ISR */
+	ND::IRQ::Remap(0x20,0x28);
+	
 	ND::IDT::SetGate(0,(unsigned)ND::ISR::ISR1,0x08,0x8E);
 	ND::IDT::SetGate(1,(unsigned)ND::ISR::ISR2,0x08,0x8E);
 	ND::IDT::SetGate(2,(unsigned)ND::ISR::ISR3,0x08,0x8E);
@@ -69,8 +72,24 @@ void ND::IDT::Install()
 	ND::IDT::SetGate(29,(unsigned)ND::ISR::ISR30,0x08,0x8E);
 	ND::IDT::SetGate(30,(unsigned)ND::ISR::ISR31,0x08,0x8E);
 	ND::IDT::SetGate(31,(unsigned)ND::ISR::ISR32,0x08,0x8E);
-	
+	ND::IDT::SetGate(32,(unsigned)ND::IRQ::IRQ1,0x08,0x8E);
+	ND::IDT::SetGate(33,(unsigned)ND::IRQ::IRQ2,0x08,0x8E);
+	ND::IDT::SetGate(34,(unsigned)ND::IRQ::IRQ3,0x08,0x8E);
+	ND::IDT::SetGate(35,(unsigned)ND::IRQ::IRQ4,0x08,0x8E);
+	ND::IDT::SetGate(36,(unsigned)ND::IRQ::IRQ5,0x08,0x8E);
+	ND::IDT::SetGate(37,(unsigned)ND::IRQ::IRQ6,0x08,0x8E);
+	ND::IDT::SetGate(38,(unsigned)ND::IRQ::IRQ7,0x08,0x8E);
+	ND::IDT::SetGate(39,(unsigned)ND::IRQ::IRQ8,0x08,0x8E);
+	ND::IDT::SetGate(40,(unsigned)ND::IRQ::IRQ9,0x08,0x8E);
+	ND::IDT::SetGate(41,(unsigned)ND::IRQ::IRQ10,0x08,0x8E);
+	ND::IDT::SetGate(42,(unsigned)ND::IRQ::IRQ11,0x08,0x8E);
+	ND::IDT::SetGate(43,(unsigned)ND::IRQ::IRQ12,0x08,0x8E);
+	ND::IDT::SetGate(44,(unsigned)ND::IRQ::IRQ13,0x08,0x8E);
+	ND::IDT::SetGate(45,(unsigned)ND::IRQ::IRQ14,0x08,0x8E);
+	ND::IDT::SetGate(46,(unsigned)ND::IRQ::IRQ15,0x08,0x8E);
+	ND::IDT::SetGate(47,(unsigned)ND::IRQ::IRQ16,0x08,0x8E);
 	ND::IDT::Flush();
+	asm volatile ("sti");
 	
 	ND::Screen::SetColor(ND_SIDE_FOREGROUND,ND_COLOR_GREEN);
 	ND::Screen::PutString("done");

@@ -15,7 +15,8 @@ void* irq[16]=
 	0,0,0,0,0,0,0,0,
 	0,0,0,0,0,0,0,0
 };
-void ND::IRQ::InstallHandler(int irq_code,void (*handler)(struct regs* r))
+extern "C"
+void ND_IRQ_InstallHandler(int irq_code,void (*handler)(struct regs* r))
 {
 	irq[irq_code]=(void*)handler;
 }
@@ -27,25 +28,8 @@ void ND::IRQ::Install()
 {
 	ND::Screen::SetColor(ND_SIDE_FOREGROUND,ND_COLOR_BLACK);
 	ND::Screen::PutString("\nInstalling IRQ...");
-	ND::IRQ::Remap(0x20,0x28);
 	
 	
-	ND::IDT::SetGate(32,(unsigned)ND::IRQ::IRQ1,0x08,0x8E);
-	ND::IDT::SetGate(33,(unsigned)ND::IRQ::IRQ2,0x08,0x8E);
-	ND::IDT::SetGate(34,(unsigned)ND::IRQ::IRQ3,0x08,0x8E);
-	ND::IDT::SetGate(35,(unsigned)ND::IRQ::IRQ4,0x08,0x8E);
-	ND::IDT::SetGate(36,(unsigned)ND::IRQ::IRQ5,0x08,0x8E);
-	ND::IDT::SetGate(37,(unsigned)ND::IRQ::IRQ6,0x08,0x8E);
-	ND::IDT::SetGate(38,(unsigned)ND::IRQ::IRQ7,0x08,0x8E);
-	ND::IDT::SetGate(39,(unsigned)ND::IRQ::IRQ8,0x08,0x8E);
-	ND::IDT::SetGate(40,(unsigned)ND::IRQ::IRQ9,0x08,0x8E);
-	ND::IDT::SetGate(41,(unsigned)ND::IRQ::IRQ10,0x08,0x8E);
-	ND::IDT::SetGate(42,(unsigned)ND::IRQ::IRQ11,0x08,0x8E);
-	ND::IDT::SetGate(43,(unsigned)ND::IRQ::IRQ12,0x08,0x8E);
-	ND::IDT::SetGate(44,(unsigned)ND::IRQ::IRQ13,0x08,0x8E);
-	ND::IDT::SetGate(45,(unsigned)ND::IRQ::IRQ14,0x08,0x8E);
-	ND::IDT::SetGate(46,(unsigned)ND::IRQ::IRQ15,0x08,0x8E);
-	ND::IDT::SetGate(47,(unsigned)ND::IRQ::IRQ16,0x08,0x8E);
 	
 	ND::Screen::SetColor(ND_SIDE_FOREGROUND,ND_COLOR_GREEN);
 	ND::Screen::PutString("done");
@@ -226,18 +210,18 @@ void ND::IRQ::IRQ16()
 extern "C"
 void ND_IRQ_Handler(struct regs* r)
 {
+	ND::Screen::PutString("HANDLER CALLED");
 	void (*handler)(struct regs *r);
-	
-	/*handler=irq[r->int_no - 32];
-	if(handler)
-	{
-		handler(r);
-	}*/
 	if(r->int_no >= 40)
 	{
 		ND::Ports::OutputB(0xA0,0x20);
 	}
 	ND::Ports::OutputB(0x20,0x20);
+	handler=(void (*)(struct regs *r))irq[r->int_no - 32];
+	if(handler)
+	{
+		handler(r);
+	}	
 }
 extern "C"
 void ND_IRQ_Common()
@@ -264,6 +248,7 @@ void ND_IRQ_Common()
 	"popl %gs \n"
 	"popa \n"
 	"addl 8, %esp \n"
+	"sti	\n"
 	"iret \n"
 	);
 }

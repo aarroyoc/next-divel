@@ -9,6 +9,7 @@
 #include <ND_GDT.hpp>
 #include <ND_IDT.hpp>
 #include <ND_IRQ.hpp>
+#include <ND_Timer.hpp>
 /* Headers for description tables */
 //#include "NextKernel_GDT.h"
 /* Headers for all system functions */
@@ -68,6 +69,7 @@ int NextKernel_Main(/*struct multiboot *mboot_ptr*/)
 	for(ch=str, i=0;*ch;ch++, i++)
 		vidmem[i]=(unsigned char) *ch | 0x0700;
 		*/
+	asm volatile("cli");
 	ND::Screen::Clear(ND_COLOR_WHITE);
 	ND::Screen::SetColor(ND_SIDE_BACKGROUND,ND_COLOR_WHITE);
 	ND::Screen::SetColor(ND_SIDE_FOREGROUND,ND_COLOR_GREEN);
@@ -77,7 +79,18 @@ int NextKernel_Main(/*struct multiboot *mboot_ptr*/)
 	ND::GDT::Install();
 	ND::IDT::Install();
 	ND::IRQ::Install();
-		
+	ND::Timer::Setup();
+	
+	asm volatile("sti");
+	ND::Timer::Phase(100); /* 100 Hz */
+	
+	ND::Screen::SetColor(ND_SIDE_FOREGROUND, ND_COLOR_BLACK);
+	ND::Screen::PutString("\nWaiting 1 tick...");
+	ND::Timer::Wait(1);
+	ND::Screen::SetColor(ND_SIDE_FOREGROUND, ND_COLOR_GREEN);
+	ND::Screen::PutString("done");
+	
+	for(;;)
 	/*while(1)
 	{
 		char tecla=ND::Keyboard::GetChar();
