@@ -13,6 +13,7 @@
 				void Setup();
 				void wait();
 				char GetChar();
+				char* GetString();
 			}
 	 }
 extern "C"

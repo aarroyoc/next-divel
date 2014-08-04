@@ -10,7 +10,11 @@
 #include <ND_Screen.hpp>
 #include <ND_IRQ.hpp>
 
+#define MAX_STRING_SIZE 1024
+
 unsigned int tmp;
+char stringBuffer[MAX_STRING_SIZE];
+unsigned int stringPos=0;
 
 void ND::Keyboard::Setup()
 {
@@ -25,33 +29,36 @@ void ND::Keyboard::Setup()
 }
 void ND::Keyboard::wait()
 {
-	ND::Screen::SetColor(ND_SIDE_FOREGROUND,ND_COLOR_BLACK);
-	ND::Screen::PutString("\nEsperando que se oprima la tecla 'y': ");
-	while (tmp){
-	}
+
 }
 char ND::Keyboard::GetChar()
 {
 	unsigned char scancode;
-//	while(1)
-//	{
-		scancode=(unsigned char)ND::Ports::InputB(0x60);
+	scancode=(unsigned char)ND::Ports::InputB(0x60);
 		
-		if(scancode & ND_KEYBOARD_KEY_RELEASE)
-		{
-			return 0;
-		}else{
-
-			return en_US[scancode];
-		}
-//	}
+	if(scancode & ND_KEYBOARD_KEY_RELEASE)
+	{
+		return 0;
+	}else{
+		return en_US[scancode];
+	}
+}
+char* ND::Keyboard::GetString()
+{
+	while(stringBuffer[stringPos-1]!='\n')
+	{
+		
+	}
+	stringPos=0;
+	
+	return stringBuffer;
 }
 
 extern "C"
 void ND_Keyboard_Handler(struct regs* r)
 {
     unsigned char scancode = ND::Keyboard::GetChar();
-    if (scancode == 'y')
-    	tmp = 0;
 	ND::Screen::PutChar(scancode);
+	stringBuffer[stringPos]=scancode;
+	stringPos++;
 }
