@@ -24,6 +24,7 @@ namespace ND{
 			void PutString(const char* str);
 			void Clear(ND_Color colour);
 			void SetCursor(uint8_t x, uint8_t y);
+			void itoa(unsigned int i);
 		}
 	}
 #endif

@@ -30,7 +30,7 @@ int NextKernel_Main(/*struct multiboot *mboot_ptr*/)
 	ND_Versions_Startup();*/
 	/*asm volatile ("int $0x3");
 	asm volatile ("int $0x4");
-	
+
 	asm volatile ("sti");*/
 	//ND_Timer_Init(50); //50 mhz
 	/*uint32_t initrd_location = *((uint32_t*)mboot_ptr->mods_addr);
@@ -39,7 +39,7 @@ int NextKernel_Main(/*struct multiboot *mboot_ptr*/)
 	/*placement_address = initrd_end;
 
 	fs_root = initialise_initrd(initrd_location);*/
-	
+
 	//Testing filesystem
 	/*int i = 0;
 	struct dirent *node = 0;
@@ -79,23 +79,27 @@ int NextKernel_Main(/*struct multiboot *mboot_ptr*/)
 	ND::GDT::Install();
 	ND::IDT::Install();
 	ND::IRQ::Install();
+
+	ND::Keyboard::Setup();
 	ND::Timer::Setup();
-	
+
+	ND::Timer::Phase(50);
+
 	asm volatile("sti");
-	ND::Timer::Phase(100); /* 100 Hz */
-	
+	ND::Keyboard::wait();
+
 	ND::Screen::SetColor(ND_SIDE_FOREGROUND, ND_COLOR_BLACK);
 	ND::Screen::PutString("\nWaiting 1 tick...");
 	ND::Timer::Wait(1);
 	ND::Screen::SetColor(ND_SIDE_FOREGROUND, ND_COLOR_GREEN);
 	ND::Screen::PutString("done");
-	
-	for(;;)
-	/*while(1)
+
+//    int h = 10/0;
+	while(1)
 	{
-		char tecla=ND::Keyboard::GetChar();
-		ND::Screen::PutChar(tecla);
-	}*/
+//		char tecla=ND::Keyboard::GetChar();
+//		ND::Screen::PutChar(tecla);
+	}
 
 	return 0;
 }

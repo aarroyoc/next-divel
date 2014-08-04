@@ -6,7 +6,7 @@
 namespace ND{
 	namespace Timer{
 			void Setup();
-			void Phase(int hz);
+			void Phase(unsigned int hz);
 			void Wait(int ticks);
 		}
 }

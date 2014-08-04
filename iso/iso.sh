@@ -1,2 +1,2 @@
 #!/bin/bash
- grub-mkrescue -o nextdivel.iso next
+ grub2-mkrescue -o nextdivel.iso next

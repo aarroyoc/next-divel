@@ -1,7 +1,7 @@
 /**
 * @file ND_Types.hpp
 * @author Adrián Arroyo Calle
-* @copyright 
+* @copyright
 *  Copyright (C) 1997,1998,1999,2000,2001,2006 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
@@ -18,7 +18,7 @@
    You should have received a copy of the GNU Lesser General Public
    License along with the GNU C Library; if not, write to the Free
    Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
-   02111-1307 USA.  
+   02111-1307 USA.
    * @note This file is based on <stdint.h> but it's a bit different
    * */
 
@@ -72,7 +72,7 @@ __extension__
 typedef long long int		int_least64_t;
 #endif
 
-/* Unsigned.  */
+//* Unsigned.  */
 typedef unsigned char		uint_least8_t;
 typedef unsigned short int	uint_least16_t;
 typedef unsigned int		uint_least32_t;

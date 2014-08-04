@@ -10,8 +10,11 @@
  
  namespace ND{
 		namespace Keyboard{
+				void Setup();
+				void wait();
 				char GetChar();
 			}
 	 }
- 
+extern "C"
+void ND_Keyboard_Handler(struct regs* r);
  #endif

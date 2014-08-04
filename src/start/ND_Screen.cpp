@@ -154,3 +154,19 @@ void ND::Screen::SetCursor(uint8_t x, uint8_t y)
 	UpdateCursor();
 }
 
+void ND::Screen::itoa(unsigned int i){
+	unsigned int tmp;
+    if(i<0){
+        ND::Screen::PutChar('-');
+        i *= -1;
+    }
+    tmp = 0;
+	do{
+		tmp = tmp * 10 + i % 10;
+		i = i / 10;
+	}while(i);
+    do{ //Move back, inserting digits as u go
+        ND::Screen::PutChar((char)(tmp % 10 + 48));
+        tmp = tmp / 10;
+    }while(tmp);
+}
