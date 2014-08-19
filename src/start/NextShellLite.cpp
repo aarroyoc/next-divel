@@ -21,7 +21,7 @@ void NextShell::Lite::Commands::NotFound()
 }
 int NextShell::Lite::ExecuteString(char* script)
 {
-	if(ND::String::Compare("version",script)==0)
+	if(ND::String::Compare("version\n",script)==0)
 		NextShell::Lite::Commands::Version();
 	else
 		NextShell::Lite::Commands::NotFound();
@@ -32,7 +32,7 @@ int NextShell::Lite::WaitForCommand()
 	ND::Screen::SetColor(ND_SIDE_FOREGROUND,ND_COLOR_BLACK);
 	ND::Screen::PutString("NextShellLite:-> ");
 	char* cmd=ND::Keyboard::GetString();
-	ND::Screen::PutString(cmd);
+	//ND::Screen::PutString(cmd);
 	NextShell::Lite::ExecuteString(cmd);
 	
 }

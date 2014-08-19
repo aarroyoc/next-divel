@@ -12,7 +12,7 @@
 		namespace Keyboard{
 				void Setup();
 				void wait();
-				char GetChar();
+				unsigned char GetChar();
 				char* GetString();
 			}
 	 }

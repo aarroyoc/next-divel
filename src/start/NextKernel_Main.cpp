@@ -55,8 +55,8 @@ int NextKernel_Main(/*struct multiboot *mboot_ptr*/)
 	ND::Keyboard::wait();
 
 	ND::Screen::SetColor(ND_SIDE_FOREGROUND, ND_COLOR_BLACK);
-	ND::Screen::PutString("\nWaiting 1 tick...");
-	ND::Timer::Wait(1);
+	ND::Screen::PutString("\nWaiting 100 ticks...");
+	ND::Timer::Wait(100);
 	ND::Screen::SetColor(ND_SIDE_FOREGROUND, ND_COLOR_GREEN);
 	ND::Screen::PutString("done");
 

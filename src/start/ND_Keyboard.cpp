@@ -31,14 +31,14 @@ void ND::Keyboard::wait()
 {
 
 }
-char ND::Keyboard::GetChar()
+unsigned char ND::Keyboard::GetChar()
 {
 	unsigned char scancode;
 	scancode=(unsigned char)ND::Ports::InputB(0x60);
 		
 	if(scancode & ND_KEYBOARD_KEY_RELEASE)
 	{
-		return 0;
+		return 255;
 	}else{
 		return en_US[scancode];
 	}
@@ -58,7 +58,10 @@ extern "C"
 void ND_Keyboard_Handler(struct regs* r)
 {
     unsigned char scancode = ND::Keyboard::GetChar();
-	ND::Screen::PutChar(scancode);
-	stringBuffer[stringPos]=scancode;
-	stringPos++;
+    if(scancode!=255)
+    {
+		ND::Screen::PutChar(scancode);
+		stringBuffer[stringPos]=scancode;
+		stringPos++;
+	}
 }

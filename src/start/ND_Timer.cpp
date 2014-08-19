@@ -46,6 +46,6 @@ void ND_Timer_Handler(struct regs* r)
 	if(ND_TIMER_TICKS % 18 ==0)
 	{
 		//ND::Screen::SetColor(ND_SIDE_FOREGROUND,ND_COLOR_BROWN);
-		//ND::Screen::PutString("\nOne more second"); WE SHOULD DO A REFRESH SCREEN
+		//ND::Screen::PutString("\nOne more second"); //WE SHOULD DO A REFRESH SCREEN
 	}
 }
