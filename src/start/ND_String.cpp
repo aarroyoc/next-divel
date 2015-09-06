@@ -7,7 +7,41 @@
  
 #include <ND_String.hpp>
 #include <ND_Types.hpp>
-
+int ND::String::NumberLength(int num){
+	int len = 0;
+	if(num < 0){
+		num *= -1;
+		len++;
+	}
+	while(num > 0){
+		num /= 10;
+		len++;
+	}
+	return len;
+}
+char* ND::String::itoa(int num)
+{
+	int len = NumberLength(num);
+	int pos = 0;
+	char str[len];
+	unsigned int tmp;
+    if(num<0){
+        str[0] = '-';
+        num *= -1;
+        pos++;
+    }
+    tmp = 0;
+	do{
+		tmp = tmp * 10 + num % 10;
+		num = num / 10;
+	}while(num);
+    do{ //Move back, inserting digits as u go
+        str[pos] = ((char)(tmp % 10 + 48));
+        tmp = tmp / 10;
+        pos++;
+    }while(tmp);
+    return str;
+}
 size_t ND::String::Length(const char* src)
 {
 	size_t i=0;
