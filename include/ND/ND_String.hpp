@@ -18,6 +18,8 @@ namespace ND{
 				bool IsUpper(char c);
 				bool IsLower(char c);
 				bool IsDigit(char c);
+				char* itoa(int num);
+				int NumberLength(int num);
 			}
 	
 	}
