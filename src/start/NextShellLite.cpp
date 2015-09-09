@@ -9,10 +9,19 @@
 #include "NextShellLite.hpp"
 #include <ND_String.hpp>
 
+char DIVISION_EXCEPTION[]={0x66,0xb8,0x00,0x00,
+						0x66,0xbb,0x00,0x00,
+						0x66,0xf7,0xfb};
+
 void NextShell::Lite::Commands::Version()
 {
 	ND::Screen::SetColor(ND_SIDE_FOREGROUND,ND_COLOR_GREEN);
 	ND::Screen::PutString("\nNextDivel 0.1.0 - NextShellLite 0.1.0\n");
+}
+void NextShell::Lite::Commands::ForceException()
+{
+	void (*f)(void) = (void (*)(void)) DIVISION_EXCEPTION;
+	f();
 }
 void NextShell::Lite::Commands::NotFound()
 {
@@ -23,6 +32,8 @@ int NextShell::Lite::ExecuteString(char* script)
 {
 	if(ND::String::Compare("version\n",script)==0)
 		NextShell::Lite::Commands::Version();
+	else if(ND::String::Compare("force exception\n",script)==0)
+		NextShell::Lite::Commands::ForceException();
 	else
 		NextShell::Lite::Commands::NotFound();
 	NextShell::Lite::WaitForCommand();

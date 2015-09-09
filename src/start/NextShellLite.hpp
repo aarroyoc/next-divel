@@ -8,6 +8,7 @@ namespace NextShell{
 		int ExecuteString(char* script);
 		namespace Commands{
 			void Version();
+			void ForceException();
 			void NotFound();
 		}
 	}
