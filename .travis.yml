@@ -1,9 +1,14 @@
+sudo: required
 language: cpp
 compiler:
  - gcc
  - clang
-script: cmake . && make
-install: sudo apt-get update && sudo apt-get install xorriso grub-common gcc-multilib
-env: 
- - BITS=32
- - BITS=64
+script: 
+ - mkdir build
+ - cd build
+ - cmake ..
+ - make DESTDIR=next install
+ - ./iso.sh
+install:
+ - sudo apt-get update
+ - sudo apt-get install xorriso grub-common gcc-multilib
