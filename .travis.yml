@@ -8,7 +8,6 @@ script:
  - cd build
  - cmake ..
  - make DESTDIR=next install
- - ./iso.sh
 install:
  - sudo apt-get update
  - sudo apt-get install xorriso grub-common gcc-multilib
