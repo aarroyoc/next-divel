@@ -44,7 +44,7 @@ int NextShell::Lite::ExecuteString(char* script)
 	else if(ND::String::Compare("echo\n",script)==0)
 		NextShell::Lite::Commands::Echo();
 	else if(ND::String::Compare("clear\n",script)==0)
-		ND::Screen::Clear();
+		ND::Screen::Clear(ND_COLOR_WHITE);
 	else
 		NextShell::Lite::Commands::NotFound();
 	NextShell::Lite::WaitForCommand();
