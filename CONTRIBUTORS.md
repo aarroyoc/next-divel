@@ -2,5 +2,6 @@ CONTRIBUTORS
 ============
 
 * Adrián Arroyo Calle
-* carlosorta
+* Carlos Orta
 * Manuel David Sánchez
+* Álvaro Torralba

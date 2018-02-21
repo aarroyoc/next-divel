@@ -13,6 +13,13 @@ char DIVISION_EXCEPTION[]={0x66,0xb8,0x00,0x00,
 						0x66,0xbb,0x00,0x00,
 						0x66,0xf7,0xfb};
 
+void NextShell::Lite::Commands::Echo()
+{
+	char* str=ND::Keyboard::GetString();
+	ND::Screen::SetColor(ND_SIDE_FOREGROUND,ND_COLOR_GREEN);
+	ND::Screen::PutString(str);
+}
+
 void NextShell::Lite::Commands::Version()
 {
 	ND::Screen::SetColor(ND_SIDE_FOREGROUND,ND_COLOR_GREEN);
@@ -34,6 +41,10 @@ int NextShell::Lite::ExecuteString(char* script)
 		NextShell::Lite::Commands::Version();
 	else if(ND::String::Compare("force exception\n",script)==0)
 		NextShell::Lite::Commands::ForceException();
+	else if(ND::String::Compare("echo\n",script)==0)
+		NextShell::Lite::Commands::Echo();
+	else if(ND::String::Compare("clear\n",script)==0)
+		ND::Screen::Clear();
 	else
 		NextShell::Lite::Commands::NotFound();
 	NextShell::Lite::WaitForCommand();
