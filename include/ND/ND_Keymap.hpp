@@ -16,7 +16,7 @@ unsigned char en_US[128]=
 	'*', 0, /* Alt */
 	' ',
 	0, /* Caps lock*/
-	0,0,0,0,0,0,0,0,0,0, /* F1-F10 keys */
+	'H',0,0,0,0,0,0,0,0,0, /* F1-F10 keys */
 	0, /* Num lock */
 	0, /* Scroll lock */
 	0, /* Home key */
@@ -33,7 +33,7 @@ unsigned char en_US[128]=
 	0, /* Insert key */
 	0, /* Delete key */
 	0,0,0,
-	0, 0, /* F11-F12 Keys */
+	'R', 0, /* F11-F12 Keys */
 	0
 };
 
