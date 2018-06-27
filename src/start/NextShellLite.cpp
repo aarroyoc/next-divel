@@ -30,7 +30,7 @@ void NextShell::Lite::Keys::Help()
 {
 	ND::Screen::SetColor(ND_SIDE_FOREGROUND,ND_COLOR_GREEN);
 	ND::Screen::PutString("\nNextDivel Help\n");
-	ND::Screen::SetColor(ND_SIDE_FOREGROUND,ND_COLOR_WHITE);
+	ND::Screen::SetColor(ND_SIDE_FOREGROUND,ND_COLOR_BLACK);
 	ND::Screen::PutString("About the system:\n");
 	ND::Screen::PutString("NextDivel is an experimental OS write in C, C++ and Assembler. It's currently being developed by the community.\n");
 	ND::Screen::PutString("For more complete documentation, plese visit https://github.com/aarroyoc/next-divel/wiki\n");
@@ -86,11 +86,24 @@ int NextShell::Lite::WaitForCommand()
 }
 int NextShell::Lite::main()
 {
+	ND::Screen::Clear(ND_COLOR_BLACK);
+	ND::Screen::SetColor(ND_SIDE_FOREGROUND,ND_COLOR_WHITE);
+	ND::Screen::PutString("Password: ");
+	ND::Screen::SetColor(ND_SIDE_FOREGROUND,ND_COLOR_BLACK);
+	char* password=ND::Keyboard::GetString();
+	if(ND::String::Compare("12345678\n",password)==0)
+	{
 	ND::Screen::Clear(ND_COLOR_WHITE);
 	ND::Screen::SetColor(ND_SIDE_BACKGROUND,ND_COLOR_WHITE);
 	ND::Screen::SetColor(ND_SIDE_FOREGROUND,ND_COLOR_BLUE);
 	ND::Screen::PutString("NextShellLite v0.1.0\n");
-	
 	NextShell::Lite::WaitForCommand();
+	}
+	else
+	{
+		ND::Screen::SetColor(ND_SIDE_FOREGROUND,ND_COLOR_RED);
+		ND::Screen::PutString("Incorrect password. Reboot the PC and try again.\n");
+	}
+
 }
 
