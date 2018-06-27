@@ -23,8 +23,24 @@ void NextShell::Lite::Commands::Echo()
 void NextShell::Lite::Commands::Version()
 {
 	ND::Screen::SetColor(ND_SIDE_FOREGROUND,ND_COLOR_GREEN);
-	ND::Screen::PutString("\nNextDivel 0.1.0 - NextShellLite 0.1.0\n");
+	ND::Screen::PutString("NextDivel 0.1.1 - NextShellLite 0.1.2\n");
 }
+
+void NextShell::Lite::Keys::Help()
+{
+	ND::Screen::SetColor(ND_SIDE_FOREGROUND,ND_COLOR_GREEN);
+	ND::Screen::PutString("\nNextDivel Help\n");
+	ND::Screen::SetColor(ND_SIDE_FOREGROUND,ND_COLOR_WHITE);
+	ND::Screen::PutString("About the system:\n");
+	ND::Screen::PutString("NextDivel is an experimental OS write in C, C++ and Assembler. It's currently being developed by the community.\n");
+	ND::Screen::PutString("For more complete documentation, plese visit https://github.com/aarroyoc/next-divel/wiki\n");
+}
+
+void NextShell::Lite::Keys::Reboot()
+{
+	// It's not used (without ideas)
+}
+
 void NextShell::Lite::Commands::ForceException()
 {
 	void (*f)(void) = (void (*)(void)) DIVISION_EXCEPTION;
@@ -38,15 +54,25 @@ void NextShell::Lite::Commands::NotFound()
 int NextShell::Lite::ExecuteString(char* script)
 {
 	if(ND::String::Compare("version\n",script)==0)
+	{
 		NextShell::Lite::Commands::Version();
-	else if(ND::String::Compare("force exception\n",script)==0)
-		NextShell::Lite::Commands::ForceException();
-	else if(ND::String::Compare("echo\n",script)==0)
-		NextShell::Lite::Commands::Echo();
-	else if(ND::String::Compare("clear\n",script)==0)
+	}else if(ND::String::Compare("clear\n",script)==0)
+	{
 		ND::Screen::Clear(ND_COLOR_WHITE);
-	else
-		NextShell::Lite::Commands::NotFound();
+	}else
+	{
+		if(ND::String::Compare("echo\n",script)==0)
+		{
+			NextShell::Lite::Commands::Echo();
+		}else if(ND::String::Compare("H",script)==0)
+		{
+			NextShell::Lite::Keys::Help();
+		}else
+		{
+			NextShell::Lite::Commands::NotFound();
+		}
+	
+	}
 	NextShell::Lite::WaitForCommand();
 }
 int NextShell::Lite::WaitForCommand()
