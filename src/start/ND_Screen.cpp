@@ -63,9 +63,6 @@ void ND::Screen::PutChar(char c)
 	if (c == 0x08 && cursor_x)
 	{
 		cursor_x--;
-	}else if(c == '\r')
-	{
-		cursor_x=0;
 	}else if(c == '\n')
 	{
 		cursor_x=0;

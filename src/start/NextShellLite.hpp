@@ -12,6 +12,10 @@ namespace NextShell{
 			void ForceException();
 			void NotFound();
 		}
+		namespace Keys{
+			void Help();
+			void Reboot();
+		}
 	}
 }
 
