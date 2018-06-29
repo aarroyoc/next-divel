@@ -64,7 +64,7 @@ int NextShell::Lite::ExecuteString(char* script)
 		if(ND::String::Compare("echo\n",script)==0)
 		{
 			NextShell::Lite::Commands::Echo();
-		}else if(ND::String::Compare("H",script)==0)
+		}else if(ND::String::Compare("H\n",script)==0)
 		{
 			NextShell::Lite::Keys::Help();
 		}else
