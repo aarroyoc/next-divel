@@ -1,13 +1,9 @@
-sudo: required
-language: cpp
-compiler:
- - gcc
- - clang
+os: linux
+dist: xenial
+services:
+- docker
+language: minimal
 script: 
- - mkdir build
- - cd build
- - cmake ..
- - make DESTDIR=next install
+ - docker-compose run builder
 install:
- - sudo apt-get update
- - sudo apt-get install xorriso grub-common gcc-multilib
+ - docker-compose build
